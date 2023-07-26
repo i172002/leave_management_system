@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title>
+            jsp_home_2    
+        </title>
+
+        <link rel="stylesheet" type = "text/css" href="./jsp_style_2.css"/>
+
+        <script>
+            var fieldId = 0;
+
+    function addField(){
+
+    
+        let form = document.createElement("div");
+        //let label_course = document.createElement('label');
+        //let label_periods = document.createElement('label');
+        //label_course.innerHTML = "Course Code";
+        data = ["18CS610","18CS620","18CS630","18CS640","18CS670","18CS680"];
+        
+        
+        let course_select = document.createElement("select");    //creating elements for course code selection
+        course_select.id = "course";
+        course_select.classList.add("course");   //course_select.appendChild(label_course);
+        course_select.required = "required";
+        course_select.name = "course";
+
+        let opt = document.createElement('option');
+        opt.disabled = "disabled";
+        opt.selected = "selected";
+        opt.innerText = "Select the course code";
+        course_select.appendChild(opt);
+        for(i = 0;i<data.length;i++)
+        {
+        let opt=document.createElement('option');
+        opt.setAttribute("value",data[i]);
+        opt.innerText = data[i];
+        course_select.appendChild(opt)
+        }
+
+    let no_of_period = document.createElement("input"); //creating elements for no_of_period
+    no_of_period.setAttribute("type","number");
+    no_of_period.setAttribute("placeholder","No Of Hours");
+    no_of_period.classList.add("no_of_period")
+    no_of_period.required = "required";
+    no_of_period.name = "no_of_period";
+
+    //label_periods.innerHTML = "No of Periods";
+    //no_of_period.appendChild(label_periods);
+
+    let description = document.createElement("input"); //creating elements for description
+    description.setAttribute("type","text");
+    description.setAttribute("placeholder","Reason");
+    description.classList.add("description");
+    description.required = "required";
+    description.name = "description";
+
+    //document.getElementById("form_add").appendChild(label_course);
+    document.getElementById("form_add").appendChild(document.createElement("br"));
+    document.getElementById("form_add").appendChild(document.createElement("br"));
+
+    document.getElementById("form_add").appendChild(course_select);
+        
+    document.getElementById("form_add").appendChild(document.createElement("br"));
+    document.getElementById("form_add").appendChild(document.createElement("br"));
+
+    //document.getElementById("form_add").appendChild(label_periods);
+    document.getElementById("form_add").appendChild(no_of_period);
+    document.getElementById("form_add").appendChild(document.createElement("br"));
+    document.getElementById("form_add").appendChild(document.createElement("br"));
+
+    document.getElementById("form_add").appendChild(description);
+    
+}
+
+   function submitted()
+   {
+    var x = document.getElementsByClassName("description");
+    alert(x.length);
+   }
+ 
+        </script>
+    </head>
+ 
+ 
+ 
+    <body>
+    <form action="jsp_data.jsp" method = "GET">
+              
+        <input type = "text" name = "Date"  required placeholder="Date">
+        
+        <br><br>
+        <div id = "form_add" class="form_input">
+            
+            <!--label for="course">Course Code</label-->
+            <select name="course" class="course" required>
+                <option value="" disabled selected>Select the course code</option>
+                <option value="18CS610">18CS610</option>
+                <option value="18CS620">18CS620</option>
+                <option value="18CS630">18CS630</option>
+                <option value="18CS640">18CS640</option>
+                <option value="18CS670">18CS670</option>
+                <option value="18CS680">18CS680</option>
+            </select>
+            <br>
+            <br>
+            
+            <!--label for="periods">No of Periods</label-->
+            <input type="number" name="no_of_period" class="no_of_period" placeholder="No of hours" max="6" min="1" >
+            <br><br>
+            
+            <input type="text" name = "description" class="description" placeholder="Reason">
+           
+        
+        </div>
+        <br>
+    
+            <button type="button" class = "add_leave_data" onclick="addField();">Add Field</button>
+            <input type = "submit" class="add_leave_data"></button>
+
+      </form>
+
+ </body>
+</html>
